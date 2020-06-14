@@ -31,7 +31,27 @@ class PermissionDependencyResolver
     existing.map { |d| @dependencies[d].include?(perm_to_be_denied) }.none?
   end
 
+  # @param [existing] Array with user current permissions
+  #  @return [Array] Array with the the permissions given
+  # sorted by the dependencies.
   def sort(permissions)
+    # remove the permissions from the dependencies
+    # that we don't need
+    only_given_depen = @dependencies.slice(*permissions)
+    permission_convert = []
+
+    #create an array of hashes with the values given
+    only_given_depen.each do |key, value|
+      permission_convert += [perm: key, dep: value]
+    end
+
+    # sort the array by dep
+    permission_convert.sort! do |a, b|
+      k = (b[:dep] <=> b[:dep])
+      k.zero? ? b[:perm] <=> a[:perm] : k
+    end
+
+     permission_convert.map{|node| node[:perm] }
 
   end
 

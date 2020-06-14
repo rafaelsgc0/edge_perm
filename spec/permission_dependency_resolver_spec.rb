@@ -20,7 +20,7 @@ describe PermissionDependencyResolver do
     expect(pdr.can_grant?(['view'], 'create')).to eq true
   end
 
-  xit 'can sort permissions in dependency order given simple dependencies' do
+  it 'can sort permissions in dependency order given simple dependencies' do
     pdr = PermissionDependencyResolver.new(simple_permission_dependencies)
 
     expect(pdr.sort(['edit', 'delete', 'view'])).to eq ['view', 'edit', 'delete']
@@ -59,7 +59,7 @@ describe PermissionDependencyResolver do
     expect{ pdr.can_deny?(['create', 'delete'], 'audit') }.to raise_error(InvalidBasePermissionsError)
   end
 
-  xit 'can sort permissions in dependency order given complex dependencies' do
+  it 'can sort permissions in dependency order given complex dependencies' do
     pdr = PermissionDependencyResolver.new(complex_permission_dependencies)
     possible_orderings = [
       ['view', 'edit', 'create', 'delete', 'audit'],
