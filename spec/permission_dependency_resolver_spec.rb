@@ -28,7 +28,7 @@ describe PermissionDependencyResolver do
     expect(pdr.sort(['create', 'alter_tags', 'view', 'edit'])).to eq(['view', 'create', 'edit', 'alter_tags']).or(eq(['view', 'edit', 'create', 'alter_tags']))
   end
 
-  xit 'validates whether permissions can be denied given simple dependencies' do
+  it 'validates whether permissions can be denied given simple dependencies' do
     pdr = PermissionDependencyResolver.new(simple_permission_dependencies)
 
     expect(pdr.can_deny?(['view', 'edit'], 'view')).to eq false
@@ -56,7 +56,7 @@ describe PermissionDependencyResolver do
     pdr = PermissionDependencyResolver.new(complex_permission_dependencies)
     expect{ pdr.can_grant?(['edit', 'create'], 'alter_tags') }.to raise_error(InvalidBasePermissionsError)
     expect{ pdr.can_grant?(['view', 'delete'], 'alter_tags') }.to raise_error(InvalidBasePermissionsError)
-    # expect{ pdr.can_deny?(['create', 'delete'], 'audit') }.to raise_error(InvalidBasePermissionsError)
+    expect{ pdr.can_deny?(['create', 'delete'], 'audit') }.to raise_error(InvalidBasePermissionsError)
   end
 
   xit 'can sort permissions in dependency order given complex dependencies' do
