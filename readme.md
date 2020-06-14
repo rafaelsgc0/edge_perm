@@ -1,26 +1,3 @@
-# Edgescan Interview Programming Exercise
-
-## What do I need to do?
-
-This folder contains a collection of tests, and a class with 3 blank methods. Your goal is to implement these methods such that all of the tests pass.
-
-There's no hard time limit for the exercise, if you need longer than a week just ping us to let us know you're still working on it.
-
-## Why a programming exercise?
-
-We don't believe in high-pressured interview processes where you have to whiteboard how to reverse a doubly-linked list in front of an audience. We'd prefer to evaluate you based on the thing we want to hire you for: how well can you understand and solve a problem, and will your future team mates be able to follow what you've done.
-
-## What will the Reviewer look for?
-
-First and foremost your solution must satisfy the following:
-
-- All of the tests must pass
-- The solution must be a general solution to the problem, it cannot be hard-coded to the specific test cases we've provided
-
-Other than the above our focus is on the clarity and readability of your code. As mentioned in the previous section this is critical for the maintainability of a codebase.
-
-## Ok I'm ready, Give me the Details!
-
 This exercise is based on a real problem we encountered while building edgescan. We have a collection of permissions that can be granted to users: view, edit, delete etc. and there are dependencies between these. For example: to grant the edit permission to a user they must already have the view permission. This challenge represents this situation with the following hash:
 
 ```
