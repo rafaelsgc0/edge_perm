@@ -18,8 +18,17 @@ class PermissionDependencyResolver
     dependencies_to_check.index { |x| !existing.include?(x) }.nil?
   end
 
+  # @param [existing] Array with user current permissions
+  # @param [perm_to_be_denied] String Permission to be denied
+  # @return [Boolean] If the permission given can be granted.
+  # raise an error if the permission existing has an error of dependencies.
   def can_deny?(existing, perm_to_be_denied)
+    can_go = current_dependencies_fine?(existing)
+    raise InvalidBasePermissionsError, 'you current permissions are wrong' unless can_go
 
+    # it is good to go if the permission to be deny is not a dependency
+    # any existing one
+    existing.map { |d| @dependencies[d].include?(perm_to_be_denied) }.none?
   end
 
   def sort(permissions)
