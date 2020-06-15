@@ -1,4 +1,4 @@
-This exercise is based on a real problem we encountered while building edgescan. We have a collection of permissions that can be granted to users: view, edit, delete etc. and there are dependencies between these. For example: to grant the edit permission to a user they must already have the view permission. This challenge represents this situation with the following hash:
+This exercise is based on a real problem we encountered while building the system. We have a collection of permissions that can be granted to users: view, edit, delete etc. and there are dependencies between these. For example: to grant the edit permission to a user they must already have the view permission. This challenge represents this situation with the following hash:
 
 ```
 {
